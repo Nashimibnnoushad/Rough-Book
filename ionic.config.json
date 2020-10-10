@@ -1,0 +1,7 @@
+{
+  "name": "RoughBook",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

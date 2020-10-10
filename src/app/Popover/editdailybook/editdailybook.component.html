@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title *ngIf="Language == 'English'">Edit Transaction</ion-title>
+    <ion-title *ngIf="Language == 'Malayalam'">ഇടപാട് തിരുത്തുക</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-card style="height: fit-content;">
+    <ion-item style="color: black; font-size: larger; font-weight: 100;">
+      <ion-datetime value="date" displayFormat="DD-MMM-YYYY" [(ngModel)]="date" placeholder="Select Date"></ion-datetime>
+    </ion-item>
+    <ion-item *ngIf="Ledgerid != 'Not a ledger'">
+      <ion-label>
+        <ion-icon name="person-outline"></ion-icon>
+      </ion-label>
+      <ion-input type="text" [(ngModel)]="Ledger" placeholder="Ledger Name" 
+       style="padding-left: 0px;padding-top: 0px;padding-right: 0px;padding-bottom: 0px;">        
+      </ion-input>
+    </ion-item>
+      <ion-item style="color: black; font-size: larger; font-weight: 100;">
+        <ion-label>
+          <ion-icon name="albums-outline"></ion-icon>
+        </ion-label>
+        <ion-input type="text" name="comment" [(ngModel)]="Comment" required>
+        </ion-input>
+      </ion-item>
+      <ion-item style="color: black; font-size: larger; font-weight: 100;">
+        <ion-label><img src="../../../assets/icon/rupee.png" style="width: 20pxpx;height: 15px;"></ion-label>
+        <ion-input type="number" name="amount" [(ngModel)]="Amount" placeholder="Amount" required>
+        </ion-input>
+      </ion-item>
+      <ion-button *ngIf="Language == 'English'" (click)="Cancel()" size="small"
+       color="tertiary" style="width: 110px;height: 37px;">Cancel
+      </ion-button>
+      <ion-button *ngIf="Language == 'Malayalam'" (click)="Cancel()" size="small"
+      color="tertiary" style="width: 110px;height: 37px;">പിൻമാറുക
+     </ion-button>
+      <ion-button *ngIf="Ledgerid != 'Not a ledger' && Language == 'English'" [disabled]="Comment==null||Amount==null||Ledger==null" (click)="Update()" size="small" color="tertiary"
+        style="width: 110px;height: 37px;">Update</ion-button>
+        <ion-button *ngIf="Ledgerid == 'Not a ledger' && Language == 'Malayalam'" [disabled]="Comment==null||Amount==null" (click)="Update()" size="small" color="tertiary"
+        style="width: 110px;height: 37px;">പുതുക്കുക</ion-button>
+  </ion-card>
+</ion-content>

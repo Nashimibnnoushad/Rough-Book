@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title *ngIf="Language == 'English'">Edit Profile</ion-title>
+    <ion-title *ngIf="Language == 'Malayalam'">പ്രൊഫൈൽ തിരുത്തുക</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-card >
+    <ion-item>
+      <ion-label>
+        <ion-icon name="person-outline"></ion-icon>
+      </ion-label>
+      <ion-input name="Name" style="color: black; font-size: larger; font-weight: 400;"
+       [(ngModel)]="Name" placeholder="Name" required>
+      </ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-select value=""  interface="popover"
+        [(ngModel)]="Language" name="language">
+        <ion-select-option selected hidden value="">Language</ion-select-option>
+        <ng-container *ngFor="let l of languagelist">
+        <ion-select-option [value]="l.value"  >{{l.Name}}</ion-select-option>
+        </ng-container>
+    </ion-select>
+    </ion-item>
+    <ion-button *ngIf="Language == 'English'" (click)="Cancel()" size="small"
+    color="tertiary" style="width: 110px;height: 37px;">Cancel
+   </ion-button>
+   <ion-button *ngIf="Language == 'Malayalam'" (click)="Cancel()" size="small"
+   color="tertiary" style="width: 110px;height: 37px;">പിൻമാറുക
+  </ion-button>
+   <ion-button *ngIf="Language == 'English'" [disabled]="Name==null" (click)="Update()" size="small" color="tertiary"
+     style="width: 110px;height: 37px;">Update</ion-button>
+     <ion-button *ngIf="Language == 'Malayalam'" [disabled]="Name==null" (click)="Update()" size="small" color="tertiary"
+     style="width: 110px;height: 37px;">പുതുക്കുക</ion-button>
+  </ion-card>
+</ion-content>

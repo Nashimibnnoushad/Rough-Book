@@ -1,0 +1,76 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title *ngIf="Language == 'English'">New Ledger</ion-title>
+    <ion-title *ngIf="Language == 'Malayalam'">പുതിയ ആൾ</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-card style="height: 355px;">
+    <ion-item style="color: black; font-size: larger; font-weight: 100;">
+      <ion-datetime value="date" displayFormat="DD-MMM-YYYY" [(ngModel)]="date" placeholder="Select Date">
+      </ion-datetime>
+    </ion-item>
+    <ion-list>
+      <ion-radio-group>
+    
+        <ion-item lines="none" (click)="Clear($event)">
+          <ion-label *ngIf="Language == 'English'">Debit</ion-label>
+          <ion-label *ngIf="Language == 'Malayalam'">കിട്ടിയത്</ion-label>
+          <ion-radio value="debit" (click)="SelectMode('debit')"></ion-radio>
+        </ion-item>
+    
+        <ion-item (click)="Clear($event)">
+          <ion-label *ngIf="Language == 'English'">Credit</ion-label>
+          <ion-label *ngIf="Language == 'Malayalam'">കൊടുത്തത്</ion-label>
+          <ion-radio value="credit" (click)="SelectMode('credit')"></ion-radio>
+        </ion-item>
+      </ion-radio-group>
+    </ion-list>
+    <ion-item >
+      <ion-label>
+        <ion-icon name="person-outline"></ion-icon>
+      </ion-label>
+      <ion-input *ngIf="Language == 'English'" type="text" [(ngModel)]="Ledger" placeholder="Ledger Name" (keyup)="FilterList($event)"
+      (ionClear)="Clear($event)" style="padding-left: 0px;padding-top: 0px;padding-right: 0px;padding-bottom: 0px;">        
+      </ion-input>
+      <ion-input *ngIf="Language == 'Malayalam'" type="text" [(ngModel)]="Ledger" placeholder="ആളുകൾ" (keyup)="FilterList($event)"
+      (ionClear)="Clear($event)" style="padding-left: 0px;padding-top: 0px;padding-right: 0px;padding-bottom: 0px;">        
+      </ion-input>
+    </ion-item>
+    <div *ngIf="templedgerlist.length!=0" style="height: 15%;">
+      <ion-list *ngFor="let l of templedgerlist">
+        <ion-item (click)="LedgerSelect(l.Name)">{{l.Name}}</ion-item>
+      </ion-list>
+    </div>
+    <ion-item (click)="Clear($event)" style="color: black; font-size: larger; font-weight: 100;">
+      <ion-label>
+        <ion-icon name="albums-outline"></ion-icon>
+      </ion-label>
+      <ion-input *ngIf="Language == 'English'" type="text" name="comment" [(ngModel)]="Comment" 
+      placeholder="Comment" required>
+      </ion-input>
+      <ion-input *ngIf="Language == 'Malayalam'" type="text" name="comment" [(ngModel)]="Comment" 
+      placeholder="സൂചന" required>
+      </ion-input>
+    </ion-item>
+    <ion-item (click)="Clear($event)" style="color: black; font-size: larger; font-weight: 100;">
+      <ion-label><img src="../../../assets/icon/rupee.png" style="width: 20pxpx;height: 15px;"></ion-label>
+      <ion-input *ngIf="Language == 'English'" type="number" name="amount" [(ngModel)]="Amount"
+       placeholder="Amount" required>
+      </ion-input>
+      <ion-input *ngIf="Language == 'Malayalam'" type="number" name="amount" [(ngModel)]="Amount"
+      placeholder="തുക" required>
+     </ion-input>
+    </ion-item>
+    <ion-button *ngIf="Language == 'English'" (click)="Cancel()" size="small" color="tertiary"
+     style="width: 110px;height: 37px;">Cancel
+    </ion-button>
+    <ion-button *ngIf="Language == 'Malayalam'" (click)="Cancel()" size="small" color="tertiary"
+    style="width: 110px;height: 37px;">പിൻമാറുക
+   </ion-button>
+    <ion-button *ngIf="Language == 'English'" [disabled]="Comment==null||Amount==null||Ledger==null||mode==null" (click)="Save()" size="small" color="tertiary"
+      style="width: 110px;height: 37px;">Save</ion-button>
+      <ion-button *ngIf="Language == 'Malayalam'" [disabled]="Comment==null||Amount==null||Ledger==null||mode==null" (click)="Save()" size="small" color="tertiary"
+      style="width: 110px;height: 37px;">സേവ്</ion-button>
+  </ion-card>
+</ion-content>

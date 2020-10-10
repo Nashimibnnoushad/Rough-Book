@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Rough Book</string>
+    <string name="title_activity_main">Rough Book</string>
+    <string name="package_name">com.roughbook.app</string>
+    <string name="custom_url_scheme">com.roughbook.app</string>
+</resources>

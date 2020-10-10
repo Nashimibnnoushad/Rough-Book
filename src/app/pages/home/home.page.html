@@ -1,0 +1,89 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title *ngIf="Language == 'English'">Home</ion-title>
+    <ion-title *ngIf="Language == 'Malayalam'">ഹോം</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+<div id="grad1" style="width: 100%;height: 160px;">
+<div style="text-align: center;font-size: x-large;font-weight: 100;padding-top: 2px;">
+<strong>{{displaymonth}} - {{year}}</strong>
+</div>
+<div class="row" style="text-align: center;font-size: xx-large;color: red;padding-top: 10px;">
+  <strong>{{variable.Credit}} / {{variable.Debit}}</strong>
+  <img src="../../../assets/icon/rupee.png" style="width: 20px;height: 23px;padding-left: 5px;">
+</div>
+<div class="row" style="padding-top: 20px;font-size: 15px;" >
+  <table class="table table-bordered" width="100%" cellspacing="0">
+    <thead class="thead-dark" style="color: blue;">
+      <tr *ngIf="Language == 'English'">
+        <th>Debit</th>
+        <th>Credit</th>
+        <th>Balance</th>
+        <th>Overflow</th>
+      </tr>
+      <tr *ngIf="Language == 'Malayalam'">
+        <th>വരവ്</th>
+        <th>ചിലവ്</th>
+        <th>ബാക്കി</th>
+        <th>ധൂർത്ത്</th>
+      </tr>
+    </thead>
+    <tbody>
+      <ng-container>
+        <tr style="text-align: center;">
+          <td><img src="../../../assets/icon/rupee.png" style="width: 20pxpx;height: 12px;"> {{variable.Debit}}</td>
+          <td><img src="../../../assets/icon/rupee.png" style="width: 20pxpx;height: 12px;"> {{variable.Credit}}</td>
+          <td><img src="../../../assets/icon/rupee.png" style="width: 20pxpx;height: 12px;"> {{variable.Balance}}</td>
+          <td><img src="../../../assets/icon/rupee.png" style="width: 20pxpx;height: 12px;"> {{variable.Overflow}}</td>
+        </tr>
+      </ng-container>
+    </tbody>
+  </table>
+</div>
+</div>
+
+<ion-card color="success" style="text-align: center;">
+  <ion-card-header>
+    <ion-card-title *ngIf="Language == 'English'">New Debit</ion-card-title>
+    <ion-card-title *ngIf="Language == 'Malayalam'">പുതിയ വരവ്</ion-card-title>
+  </ion-card-header>
+  <ion-card-content>
+      <ion-button *ngIf="Language == 'English'" (click)="NewDebit($event)" expand="block" size="large" 
+      color="tertiary">Debit</ion-button>
+      <ion-button *ngIf="Language == 'Malayalam'" (click)="NewDebit($event)" expand="block" size="large" 
+      color="tertiary">വരവ്</ion-button>
+  </ion-card-content>
+</ion-card>
+
+
+<ion-card color="danger" style="text-align: center;">
+  <ion-card-header>
+    <ion-card-title *ngIf="Language == 'English'">New Credit</ion-card-title>
+    <ion-card-title *ngIf="Language == 'Malayalam'">പുതിയ ചിലവ്</ion-card-title>
+  </ion-card-header>
+  <ion-card-content>
+      <ion-button *ngIf="Language == 'English'" (click)="NewCredit()" expand="block" size="large" 
+      color="tertiary">Credit</ion-button>
+      <ion-button *ngIf="Language == 'Malayalam'" (click)="NewCredit()" expand="block" size="large" 
+      color="tertiary">ചിലവ്</ion-button>
+  </ion-card-content>
+</ion-card>
+
+
+<ion-card color="warning" style="text-align: center;">
+  <ion-card-header>
+    <ion-card-title *ngIf="Language == 'English'">New Ledger</ion-card-title>
+    <ion-card-title *ngIf="Language == 'Malayalam'">പുതിയ ആൾ</ion-card-title>
+  </ion-card-header>
+  <ion-card-content>
+      <ion-button *ngIf="Language == 'English'" (click)="NewLedger()" expand="block" size="large" 
+      color="tertiary">Ledger</ion-button>
+      <ion-button *ngIf="Language == 'Malayalam'" (click)="NewLedger()" expand="block" size="large" 
+      color="tertiary">ആളുകൾ</ion-button>
+  </ion-card-content>
+</ion-card>
+</ion-content>

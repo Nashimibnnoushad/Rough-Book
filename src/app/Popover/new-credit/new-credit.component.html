@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title *ngIf="Language == 'English'">New Credit</ion-title>
+    <ion-title *ngIf="Language == 'Malayalam'">പുതിയ ചിലവ്</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-card style="height: 200px;">
+    <ion-item style="color: black; font-size: larger; font-weight: 100;">
+      <ion-datetime value="date" displayFormat="DD-MMM-YYYY" [(ngModel)]="date" placeholder="Select Date"></ion-datetime>
+    </ion-item>
+      <ion-item style="color: black; font-size: larger; font-weight: 100;">
+        <ion-label>
+          <ion-icon name="albums-outline"></ion-icon>
+        </ion-label>
+        <ion-input *ngIf="Language == 'English'" type="text" name="spend" [(ngModel)]="Spend"
+         placeholder="Spend For?" required></ion-input>
+         <ion-input *ngIf="Language == 'Malayalam'" type="text" name="spend" [(ngModel)]="Spend"
+         placeholder="എന്തിന് വേണ്ടി?" required>
+        </ion-input>
+      </ion-item>
+      <ion-item style="color: black; font-size: larger; font-weight: 100;">
+        <ion-label><img src="../../../assets/icon/rupee.png" style="width: 20pxpx;height: 15px;"></ion-label>
+        <ion-input *ngIf="Language == 'English'" type="number" name="amount" [(ngModel)]="Amount"
+         placeholder="Amount" required>
+        </ion-input>
+        <ion-input *ngIf="Language == 'Malayalam'" type="number" name="amount" [(ngModel)]="Amount"
+        placeholder="തുക" required>
+       </ion-input>
+      </ion-item>
+      <ion-button *ngIf="Language == 'English'" (click)="Cancel()" size="small" color="tertiary" 
+      style="width: 110px;height: 37px;">Cancel
+      </ion-button>
+      <ion-button *ngIf="Language == 'Malayalam'" (click)="Cancel()" size="small" color="tertiary" 
+      style="width: 110px;height: 37px;">പിൻമാറുക
+      </ion-button>
+      <ion-button *ngIf="Language == 'English'" [disabled]="Spend==null||Amount==null" (click)="Save()" size="small" color="tertiary"
+        style="width: 110px;height: 37px;">Save</ion-button>
+        <ion-button *ngIf="Language == 'Malayalam'" [disabled]="Spend==null||Amount==null" (click)="Save()" size="small" color="tertiary"
+        style="width: 110px;height: 37px;">സേവ്</ion-button>
+  </ion-card>
+</ion-content>

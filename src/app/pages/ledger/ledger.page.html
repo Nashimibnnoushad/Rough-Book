@@ -1,0 +1,112 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title *ngIf="Language == 'English'">Ledger</ion-title>
+    <ion-title *ngIf="Language == 'Malayalam'">ആളുകൾ</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+<ion-card color="warning" style="height: 180px;">
+  <ion-item>
+    <ion-select value="" placeholder="Select Ledger" interface="popover" (ionChange)="Getmonthbook()" [(ngModel)]="Ledger" name="ledger">
+      <ion-select-option *ngIf="Language == 'English'" selected hidden value="">Select Ledger</ion-select-option>
+      <ion-select-option *ngIf="Language == 'Malayalam'" selected hidden value="">ആളെ തിരഞ്ഞെടുക്കുക</ion-select-option>
+      <ng-container *ngFor="let l of ledgerlist">
+      <ion-select-option [value]="l.Id"  >{{l.Name}}</ion-select-option>
+      </ng-container>
+  </ion-select>
+  </ion-item>
+  <ion-item style="color: black; font-size: large; font-weight: 100;text-align: center;">
+    <ion-datetime *ngIf="Language == 'English'" value="date" displayFormat="DD-MMM-YYYY"
+     [(ngModel)]="date" (ionChange)="Getmonthbook()" placeholder="Select Date"></ion-datetime>
+     <ion-datetime *ngIf="Language == 'Malayalam'" value="date" displayFormat="DD-MMM-YYYY"
+     [(ngModel)]="date" (ionChange)="Getmonthbook()" placeholder="തീയതി തിരഞ്ഞെടുക്കുക"></ion-datetime>
+  <ion-button *ngIf="Language == 'English'" color="primary" style="margin-left: 145px;"
+   (click)="All()" size="small">All</ion-button>
+   <ion-button *ngIf="Language == 'Malayalam'" color="primary" style="margin-left: 145px;"
+   (click)="All()" size="small">എല്ലാം</ion-button>
+  </ion-item>
+<div class="row" style="padding-top: 20px;font-size: 20px;" >
+  <table class="table table-bordered" width="100%" cellspacing="0">
+    <thead class="thead-dark" style="color: blue;">
+      <tr *ngIf="Language == 'English'">
+        <th>Debit</th>
+        <th>Credit</th>
+        <th>Balance</th>
+      </tr>
+      <tr *ngIf="Language == 'Malayalam'">
+        <th>വരവ്</th>
+        <th>ചിലവ്</th>
+        <th>ബാക്കി</th>
+      </tr>
+    </thead>
+    <tbody>
+      <ng-container>
+        <tr style="text-align: center;">
+          <td><img src="../../../assets/icon/rupee.png" style="width: 11px;height: 15px;">{{totaldebit}}</td>
+          <td><img src="../../../assets/icon/rupee.png" style="width: 11px;height: 15px;">{{totalcredit}}</td>
+          <td *ngIf="totaldebit>=totalcredit"><img src="../../../assets/icon/rupee.png"
+             style="width: 11px;height: 15px;"><span style="color: green;">{{balance}}</span></td>
+          <td *ngIf="totalcredit>totaldebit"><img src="../../../assets/icon/rupee.png"
+             style="width: 11px;height: 15px;"><span style="color: red;">{{balance}}</span></td>
+        </tr>
+      </ng-container>
+    </tbody>
+  </table>
+</div>
+</ion-card>
+
+<ion-card *ngFor="let t of temptransactionlist; let i=index" color="primary">
+  <ion-card-header>
+    <ion-card-title *ngIf="Language == 'English'">{{t.Date}} - {{t.Time}}
+      <span *ngIf="t.Mode=='debit'" style="margin-left: 25px;">
+        <ion-button color="success" size="small">Debit</ion-button></span>
+      <span *ngIf="t.Mode=='credit'" style="margin-left: 25px;">
+        <ion-button color="danger" size="small">Credit</ion-button></span>
+    </ion-card-title>
+    <ion-card-title *ngIf="Language == 'Malayalam'">{{t.Date}} - {{t.Time}}
+      <span *ngIf="t.Mode=='debit'" style="margin-left: 25px;">
+        <ion-button color="success" size="small">വരവ്</ion-button></span>
+      <span *ngIf="t.Mode=='credit'" style="margin-left: 25px;">
+        <ion-button color="danger" size="small">ചിലവ്</ion-button></span>
+    </ion-card-title>
+  </ion-card-header>
+  <ion-card-content style="padding-bottom: 0px;">
+    <ion-item *ngIf="t.Ledgerid != 'Not a ledger'" id="rounded"
+    style="color: black; font-size: larger; font-weight: 100;">
+      <ion-label>
+        <ion-icon name="person-outline"></ion-icon>
+      </ion-label>
+      {{t.Ledgername}}
+    </ion-item>
+    <ion-item id="rounded" style="color: black; font-size: larger; font-weight: 100;">
+      <ion-label>
+        <ion-icon name="albums-outline"></ion-icon>
+      </ion-label>
+      {{t.Comment}}
+    </ion-item>
+    <ion-item *ngIf="t.Mode=='debit'" id="rounded"
+     style="color: black; font-size: larger; font-weight: 100;">
+      <ion-label><img src="../../../assets/icon/rupee.png" style="width: 12px;height: 15px;"></ion-label>
+      {{t.Debit}}
+    </ion-item>
+    <ion-item *ngIf="t.Mode=='credit'" id="rounded"
+    style="color: black; font-size: larger; font-weight: 100;">
+      <ion-label><img src="../../../assets/icon/rupee.png" style="width: 12px;height: 15px;"></ion-label>
+      {{t.Credit}}
+    </ion-item>
+    <table style="font-size: 35px;padding-top: 5px;text-align: center;margin-left: 30%;" cellspacing="0">
+      <td>
+        <tr><ion-icon name="create" (click)="Edit(t.Id,i)"></ion-icon></tr>
+      </td>
+      <td style="padding-left: 30px;">
+        <tr><ion-icon name="trash" (click)="Delete(t.Id,i)"></ion-icon></tr>
+      </td>
+    </table>
+  </ion-card-content>
+</ion-card>
+</ion-content>
+
+

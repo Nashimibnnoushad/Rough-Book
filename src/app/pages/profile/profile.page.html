@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title *ngIf="Language == 'English'">Profile</ion-title>
+    <ion-title *ngIf="Language == 'Malayalam'">പ്രൊഫൈൽ</ion-title>
+    <ion-buttons slot="end">
+      <ion-button *ngIf="Language == 'English'" size="small" (click)="Reset()" expand="block">Reset</ion-button>
+      <ion-button *ngIf="Language == 'Malayalam'" size="small" (click)="Reset()" expand="block">പുനഃക്രമീകരണം</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="card-background-page">
+  <ion-card >
+    <ion-card-header>
+      <ion-card-title style="text-align: left;">
+        {{Name}}
+        <ion-icon name="create" style="float: right;width: 30px;height: 30px;color: blue;" (click)="Edit()">
+        </ion-icon>
+      </ion-card-title>
+    </ion-card-header>
+  </ion-card>
+  <ion-card>
+    <img class="bg" src="../../../assets/colimg.png">
+    <img src="../../../assets/got-money.png"/>
+    <div *ngIf="Language == 'English'" class="card-title">Debit</div>
+    <div *ngIf="Language == 'Malayalam'" class="card-title">വരവ്</div>
+    <div class="card-subtitle"><img src="../../../assets/icon/rupee.png" style="width: 20pxpx;height: 20px;">
+      {{totaldebit}}</div>
+  </ion-card>
+
+  <ion-card>
+    <img class="bg" src="../../../assets/colimg.png">
+    <img src="../../../assets/paid-money.jpg"/>
+    <div *ngIf="Language == 'English'" class="card-title">Credit</div>
+    <div *ngIf="Language == 'Malayalam'" class="card-title">ചിലവ്</div>
+    <div class="card-subtitle"><img src="../../../assets/icon/rupee.png" style="width: 20pxpx;height: 20px;">
+      {{totalcredit}} 
+    </div>
+  </ion-card>
+
+  <ion-card>
+    <img class="balancebg" src="../../../assets/colimg.png">
+    <img src="../../../assets/balance-money.jpg"/>
+    <div *ngIf="Language == 'English'" class="card-title">Balance</div>
+    <div *ngIf="Language == 'Malayalam'" class="card-title">ബാക്കി</div>
+    <div class="card-subtitle"><img src="../../../assets/icon/rupee.png" style="width: 20pxpx;height: 20px;">
+      {{balance}}</div>
+  </ion-card>
+
+</ion-content>

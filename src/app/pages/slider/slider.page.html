@@ -1,0 +1,39 @@
+<ion-content fullscreen class="ion-padding" scroll-y="false">
+  <ion-slides>
+
+    <ion-slide class="bg1">
+      <div class="slide">
+        <img src="../../../assets/wallpaper.png"/>
+        <h2>Welcome</h2>
+        <p>The <b>Rough Book app</b> is a platform used to record all your money transactions.</p>
+      </div>
+    </ion-slide>
+
+    <ion-slide class="bg2">
+      <img src="../../../assets/slide1.png"/>
+      <h2>What is Rough Book?</h2>
+      <p><b>Rough Book</b> application can be used to save all your money transactions and follow up the transactions too.</p>
+    </ion-slide>
+
+    <ion-slide class="bg3">
+      <img src="../../../assets/slide2.png"/>
+      <h2>Additional Feature?</h2>
+      <p><b>Key Feature</b> is you get easily analyse the transactions with graphs and repports.</p>
+    </ion-slide>
+
+    <ion-slide class="bg4">
+      <img src="../../../assets/slide3.png" style="margin-bottom: 0px;"/>
+      <h2 style="margin-top: 0px;">Ready to Use?</h2>
+      <ion-button [disabled]="Language == 'English'" size="small" color="primary" (click)="SetLanguage('English')">English</ion-button>
+      <ion-button [disabled]="Language == 'Malayalam'" size="small" color="primary" (click)="SetLanguage('Malayalam')">Malayalam</ion-button>
+
+      <ion-item>
+        <ion-input name="Name" style="color: black; font-size: larger; font-weight: 400;text-align: center;"
+         [(ngModel)]="Name" placeholder="Name" required>
+        </ion-input>
+      </ion-item>
+      <ion-button (click)="Continue()" fill="clear">Continue <ion-icon slot="end" name="arrow-forward"></ion-icon></ion-button>
+    </ion-slide>
+
+  </ion-slides>
+</ion-content>
