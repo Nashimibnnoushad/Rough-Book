@@ -37,8 +37,55 @@
   </div>
   </ion-card>
   <!-- <div  style="display: block; width: 200px; height: 200px;"> -->
-    <canvas width="1000" height="1000" baseChart [data]="doughnutChartData" [labels]="doughnutChartLabels" [colors]="colors"
+    <!-- <canvas width="1000" height="1000" baseChart [data]="doughnutChartData" [labels]="doughnutChartLabels" [colors]="colors"
       [chartType]=" doughnutChartType">
-    </canvas>
+    </canvas> -->
   <!-- </div> -->
+
+
+  <ion-card *ngFor="let t of temptransactionlist; let i=index" color="primary">
+    <ion-card-header>
+      <ion-card-title *ngIf="Language == 'English'">{{t.Date}} - {{t.Time}}
+        <span *ngIf="t.Mode=='debit'" style="margin-left: 147px;"><ion-button color="success" size="small">Debit</ion-button></span>
+        <span *ngIf="t.Mode=='credit'" style="margin-left: 147px;"><ion-button color="danger" size="small">Credit</ion-button></span>
+      </ion-card-title>
+      <ion-card-title *ngIf="Language == 'Malayalam'">{{t.Date}} - {{t.Time}}
+        <span *ngIf="t.Mode=='debit'" style="margin-left: 147px;"><ion-button color="success" size="small">വരവ്</ion-button></span>
+        <span *ngIf="t.Mode=='credit'" style="margin-left: 147px;"><ion-button color="danger" size="small">ചിലവ്</ion-button></span>
+      </ion-card-title>
+    </ion-card-header>
+    <ion-card-content style="padding-bottom: 0px;">
+      <ion-item *ngIf="t.Ledgerid != 'Not a ledger'" id="rounded"
+      style="color: black; font-size: larger; font-weight: 100;">
+        <ion-label>
+          <ion-icon name="person-outline"></ion-icon>
+        </ion-label>
+        {{t.Ledgername}}
+      </ion-item>
+      <ion-item id="rounded" style="color: black; font-size: larger; font-weight: 100;">
+        <ion-label>
+          <ion-icon name="albums-outline"></ion-icon>
+        </ion-label>
+        {{t.Comment}}
+      </ion-item>
+      <ion-item *ngIf="t.Mode=='debit'" id="rounded"
+       style="color: black; font-size: larger; font-weight: 100;">
+        <ion-label><img src="../../../assets/icon/rupee.png" style="width: 12px;height: 15px;"></ion-label>
+        {{t.Debit}}
+      </ion-item>
+      <ion-item *ngIf="t.Mode=='credit'" id="rounded"
+      style="color: black; font-size: larger; font-weight: 100;">
+        <ion-label><img src="../../../assets/icon/rupee.png" style="width: 12px;height: 15px;"></ion-label>
+        {{t.Credit}}
+      </ion-item>
+      <table style="font-size: 35px;padding-top: 5px;text-align: center;margin-left: 30%;" cellspacing="0">
+        <td>
+          <tr><ion-icon name="create" (click)="Edit(t.Id,i)"></ion-icon></tr>
+        </td>
+        <td style="padding-left: 30px;">
+          <tr><ion-icon name="trash" (click)="Delete(t.Id,i)"></ion-icon></tr>
+        </td>
+      </table>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

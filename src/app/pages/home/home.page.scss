@@ -1,8 +1,33 @@
 #grad1 {
-    background-color: rgb(63, 211, 211); /* For browsers that do not support gradients */
-    background-image: linear-gradient(to bottom right, rgb(63, 211, 211), rgb(83, 231, 140)); /* Standard syntax (must be last) */
+    background-color: rgb(63, 211, 211); 
+    background-image: linear-gradient(to bottom right, rgb(63, 211, 211), rgb(83, 231, 140)); 
+    // background-image: url('../../../assets/home3.gif');
+    background-size: cover; /* You must set a specified height */
+    background-position: center; /* Center the image */
   }
 .ionback {
     background-color: rgb(63, 211, 211); /* For browsers that do not support gradients */
     background-image: linear-gradient(to bottom right, rgb(63, 211, 211), rgb(83, 231, 140)); /* Standard syntax (must be last) */
 }
+
+#credit {
+  text-align: center;
+  // background-image: url('../../../assets/credit.gif');
+  background-position: center; /* Center the image */
+  background-size: cover;
+}
+
+#debit {
+  text-align: center;
+  // background-image: url('../../../assets/debit.gif');
+  background-position: center; /* Center the image */
+  background-size: cover;
+}
+
+#ledger {
+  text-align: center;
+  // background-image: url('../../../assets/ledger.gif');
+  background-position: center; /* Center the image */
+  background-size: cover;
+}
+

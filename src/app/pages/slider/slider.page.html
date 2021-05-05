@@ -1,5 +1,5 @@
 <ion-content fullscreen class="ion-padding" scroll-y="false">
-  <ion-slides>
+  <ion-slides pager="true" [options]="slideOpts">
 
     <ion-slide class="bg1">
       <div class="slide">
@@ -24,8 +24,8 @@
     <ion-slide class="bg4">
       <img src="../../../assets/slide3.png" style="margin-bottom: 0px;"/>
       <h2 style="margin-top: 0px;">Ready to Use?</h2>
-      <ion-button [disabled]="Language == 'English'" size="small" color="primary" (click)="SetLanguage('English')">English</ion-button>
-      <ion-button [disabled]="Language == 'Malayalam'" size="small" color="primary" (click)="SetLanguage('Malayalam')">Malayalam</ion-button>
+      <!-- <ion-button [disabled]="Language == 'English'" size="small" color="primary" (click)="SetLanguage('English')">English</ion-button>
+      <ion-button [disabled]="Language == 'Malayalam'" size="small" color="primary" (click)="SetLanguage('Malayalam')">Malayalam</ion-button> -->
 
       <ion-item>
         <ion-input name="Name" style="color: black; font-size: larger; font-weight: 400;text-align: center;"

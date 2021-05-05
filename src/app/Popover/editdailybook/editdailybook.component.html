@@ -37,7 +37,7 @@
      </ion-button>
       <ion-button *ngIf="Ledgerid != 'Not a ledger' && Language == 'English'" [disabled]="Comment==null||Amount==null||Ledger==null" (click)="Update()" size="small" color="tertiary"
         style="width: 110px;height: 37px;">Update</ion-button>
-        <ion-button *ngIf="Ledgerid == 'Not a ledger' && Language == 'Malayalam'" [disabled]="Comment==null||Amount==null" (click)="Update()" size="small" color="tertiary"
+        <ion-button *ngIf="Ledgerid !== 'Not a ledger' && Language == 'Malayalam'" [disabled]="Comment==null||Amount==null||Ledger==null" (click)="Update()" size="small" color="tertiary"
         style="width: 110px;height: 37px;">പുതുക്കുക</ion-button>
   </ion-card>
 </ion-content>

@@ -32,7 +32,7 @@ export class HomePage implements OnInit {
   transactionlist: Transaction[] = []
   temptransactionlist: Transaction[] = []
   variable: Globalvariables = new Globalvariables()
-  constructor(private popover: PopoverController, private ref: ChangeDetectorRef, private variableservice:VariablesService) {
+  constructor(private popover: PopoverController, private ref: ChangeDetectorRef, private variableservice: VariablesService) {
     this.searchEndDate = this.SearchDate.add(this.ElapsTime, "minutes");
     this.Language = variableservice.language
     let d = new Date()
@@ -145,8 +145,8 @@ export class HomePage implements OnInit {
 
     return [hours, minutes].join(':');
   }
-  NewDebit(myEvent) {
-    this.popover.create({ component: NewDebitComponent, showBackdrop: true }).then((popoverElement) => {
+  async NewDebit() {
+    this.popover.create({component: NewDebitComponent, showBackdrop: true }).then((popoverElement) => {
       popoverElement.present();
     })
   }
