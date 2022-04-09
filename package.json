@@ -31,7 +31,7 @@
     "chart.js": "^2.9.3",
     "core-js": "^2.5.4",
     "highcharts": "^8.1.0",
-    "moment": "^2.25.3",
+    "moment": "^2.29.2",
     "ng2-charts": "^2.3.2",
     "rxjs": "~6.5.1",
     "tslib": "^1.9.0",
